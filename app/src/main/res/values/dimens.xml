@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="imageview.item.size.maginlert">23dp</dimen>
+    <dimen name="textview.item.size.maginlert">22dp</dimen>
     <dimen name="relativelayout.item.size">53dp</dimen>
 
     <dimen name="relativelayout.size.contact">53dp</dimen>

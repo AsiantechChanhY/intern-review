@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/relativelayout.item.size">
+
+    <intership.dev.contact.widget.CircleImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_avt1"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/imageview.item.size.maginlert">
+    </intership.dev.contact.widget.CircleImageView>
+
+    <TextView
+        android:id="@+id/txtUsername"
+        android:layout_toRightOf="@+id/imgAvatar"
+        android:layout_width="170dp"
+        android:layout_height="match_parent"
+        android:text="abc"
+        android:textSize="17sp"
+        android:textColor="@color/textview.item.txtUsername"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/textview.item.size.maginlert"/>
+
+    <LinearLayout
+        android:id="@+id/rlIcon"
+        android:layout_toRightOf="@+id/txtUsername"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:gravity="center"
+        android:layout_marginRight="17dp">
+
+        <RelativeLayout
+            android:id="@+id/rlEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imgEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imgDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
