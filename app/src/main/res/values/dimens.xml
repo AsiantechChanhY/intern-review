@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="relativelayout.item.size">53dp</dimen>
+
+    <dimen name="relativelayout.size.contact">53dp</dimen>
+    <dimen name="textview.size.txtContact">23dp</dimen>
+
 </resources>
