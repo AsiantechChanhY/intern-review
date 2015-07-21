@@ -1,17 +1,50 @@
 package intership.dev.contact;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import intership.dev.contact.adapter.ContactAdapter;
+import intership.dev.contact.model.Contact;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
+
+    public static final String[] NAME = new String[]{"Strawberry", "Banana", "Orange", "Mixed", "Abbott",
+            "Abraham", "Alvin", "Dalton", "Gale", "Halsey", "Isaac","Philbert"};
+
+    public static final String[] DESC = new String[]{"1,2,3,4,5,6,7,8,9,0, 1, 2"};
+
+    public static final Integer[] AVATAR = new Integer[]{R.drawable.ic_avt1, R.drawable.ic_avt2, R.drawable.ic_avt3,
+            R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2, R.drawable.ic_avt3,
+            R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2};
+
+    ListView lvContact;
+    List<Contact> mContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mContact = new ArrayList<Contact>();
+
+        for(int i=0; i < NAME.length; i++) {
+            Contact item = new Contact();
+            item.setmAvatar(AVATAR[i]);
+            item.setmUsernameContact(NAME[i]);
+            mContact.add(item);
+        }
+
+        lvContact = (ListView) findViewById(R.id.lvContact);
+        ContactAdapter contactAdapter = new ContactAdapter(this, R.layout.item_list_contact, mContact);
+        lvContact.setAdapter(contactAdapter);
+
     }
 
     @Override
