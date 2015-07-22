@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:backgroundDimAmount="0.0">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+    <TextView
+        android:id="@+id/txtdc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure want to "
+        android:textSize="15sp"
+        android:textColor="#4f4c4c"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+        <View
+            android:layout_above="@+id/lndialog"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#b0b0b5"></View>
+
+        <LinearLayout
+            android:id="@+id/lndialog"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/txtOk"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:textSize="20sp"
+                android:textColor="#51A9FF"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                />
+            <View
+                android:layout_width="0.1dp"
+                android:layout_height="match_parent"
+                android:background="#b4b4b9"/>
+            <TextView
+                android:id="@+id/txtCancel"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textColor="#51A9FF"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

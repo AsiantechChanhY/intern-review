@@ -3,4 +3,5 @@
     <color name="imageview.backgroud.actionbar">#00bbd2</color>
     <color name="textview.text.txtContact">#ffffff</color>
     <color name="textview.item.txtUsername">#000000</color>
+
 </resources>

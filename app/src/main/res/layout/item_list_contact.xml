@@ -20,48 +20,27 @@
         android:text="abc"
         android:textSize="17sp"
         android:textColor="@color/textview.item.txtUsername"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="@dimen/textview.item.size.maginlert"/>
-
-    <LinearLayout
-        android:id="@+id/rlIcon"
-        android:layout_toRightOf="@+id/txtUsername"
-        android:layout_alignParentRight="true"
-        android:layout_width="30dp"
-        android:layout_height="match_parent"
-        android:weightSum="2"
-        android:gravity="center"
-        android:layout_marginRight="17dp">
-
-        <RelativeLayout
-            android:id="@+id/rlEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+        android:layout_marginLeft="@dimen/textview.item.size.maginlert"
+        android:layout_centerVertical="true"/>
 
         <ImageView
             android:id="@+id/imgEdit"
+            android:layout_toLeftOf="@+id/imgDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit" />
-        </RelativeLayout>
+            android:src="@drawable/ic_edit"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"/>
 
-        <RelativeLayout
-            android:id="@+id/rlDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
 
         <ImageView
             android:id="@+id/imgDelete"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_delete"/>
+            android:src="@drawable/ic_delete"
+            android:layout_centerVertical="true"/>
 
-        </RelativeLayout>
-
-    </LinearLayout>
 
 </RelativeLayout>
