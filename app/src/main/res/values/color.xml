@@ -4,4 +4,14 @@
     <color name="textview.text.txtContact">#ffffff</color>
     <color name="textview.item.txtUsername">#000000</color>
 
+    <color name="textview.dialog.txtdc1">#4f4c4c</color>
+    <color name="textview.dialog.txtOk">#51A9FF</color>
+    <color name="view.dialog">#b0b0b5</color>
+
+    <color name="dialog.background">#ccffffff</color>
+
+    <color name="dark_slate_gray">#2F4F4F</color>
+     <color name="gray_2">#AFAFAF</color>
+    <color name="gray_1">#C0C0C0</color>
+
 </resources>

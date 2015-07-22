@@ -10,4 +10,11 @@
     <dimen name="relativelayout.size.contact">53dp</dimen>
     <dimen name="textview.size.txtContact">23dp</dimen>
 
+    <dimen name="relativelayout.dialog.width">300dp</dimen>
+    <dimen name="relativelayout.dialog.heigth">300dp</dimen>
+    <dimen name="textview.dialog.txtOk">125dp</dimen>
+
+    <dimen name="progressbar.padding">3dp</dimen>
+     <dimen name="progressbar.width">36dp</dimen>
+     <dimen name="progressbar.height">36dp</dimen>
 </resources>
