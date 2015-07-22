@@ -32,7 +32,6 @@
             android:layout_marginRight="5dp"
             android:layout_centerVertical="true"/>
 
-
         <ImageView
             android:id="@+id/imgDelete"
             android:layout_alignParentRight="true"

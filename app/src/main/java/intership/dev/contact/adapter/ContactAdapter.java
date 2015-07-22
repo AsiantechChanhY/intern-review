@@ -52,35 +52,53 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             hodel.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    final ImageView img = (ImageView) view.findViewById(R.id.imgDelete);
 
-                    final Dialog dialog = new Dialog(mContext,R.style.Theme_Dialog);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    view.setSelected(!view.isSelected());
 
-                    dialog.setContentView(R.layout.dialog_contact);
+                    if (view.isSelected()) {
 
-                    TextView txtName = (TextView) dialog.findViewById(R.id.txtdc1);
-                    TextView txtOk = (TextView) dialog.findViewById(R.id.txtOk);
-                    TextView txtCancel = (TextView) dialog.findViewById(R.id.txtCancel);
+                        img.setBackgroundResource(R.drawable.ic_delete_on);
+                        final Dialog dialog = new Dialog(mContext, R.style.Theme_Dialog);
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-                    txtName.setText(Html.fromHtml("Are you sure you want to delete " +
-                            "<b>" + contact.getmUsernameContact().toString() + "</b>" + "?"));
+                        dialog.setContentView(R.layout.dialog_contact);
 
-                    txtCancel.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dialog.cancel();
-                        }
-                    });
-                    txtOk.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            remove(contact);
-                            dialog.hide();
-                        }
-                    });
-                    dialog.show();
+                        TextView txtName = (TextView) dialog.findViewById(R.id.txtdc1);
+                        TextView txtOk = (TextView) dialog.findViewById(R.id.txtOk);
+                        TextView txtCancel = (TextView) dialog.findViewById(R.id.txtCancel);
+
+                        txtName.setText(Html.fromHtml("Are you sure you want to delete " +
+                                "<b>" + contact.getmUsernameContact().toString() + "</b>" + "?"));
+
+                        txtCancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.cancel();
+                                img.setBackgroundResource(R.drawable.ic_delete);
+                            }
+                        });
+                        txtOk.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                remove(contact);
+                                dialog.hide();
+                            }
+                        });
+                        dialog.show();
+
+                    }
+
                 }
             });
+
+            hodel.imgEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
         }
         else
             hodel = (ViewHodel) convertview.getTag();
