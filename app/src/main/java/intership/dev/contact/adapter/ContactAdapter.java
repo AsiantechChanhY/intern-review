@@ -103,10 +103,21 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent=new Intent(mActivity, EditContactActivity.class);
-                    intent.putExtra("contact",contact);
-                    intent.putExtra("position", position);
-                    mActivity.startActivityForResult(intent, 1);
+                    final ImageView imgEdit = (ImageView) view.findViewById(R.id.imgEdit);
+
+                    view.setSelected(!view.isSelected());
+
+                    if (view.isSelected()) {
+
+                        imgEdit.setBackgroundResource(R.drawable.ic_edit_on);
+                        Intent intent = new Intent(mActivity, EditContactActivity.class);
+                        intent.putExtra("contact", contact);
+                        intent.putExtra("position", position);
+                        mActivity.startActivityForResult(intent, 1);
+                    }
+                    else {
+                        imgEdit.setBackgroundResource(R.drawable.ic_edit);
+                    }
                 }
             });
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by tran on 7/21/15.
  */
-public class Contact implements Serializable{
+public class Contact implements Serializable {
 
     public Contact() {
     }
