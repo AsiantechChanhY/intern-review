@@ -24,10 +24,10 @@ public class MainActivity extends Activity {
             R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2, R.drawable.ic_avt3,
             R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2};
 
-    LoadMoreListView lvContact;
+    LoadMoreListView mLvContact;
     List<Contact> mContact;
 
-    ContactAdapter contactAdapter;
+    ContactAdapter mContactAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +44,11 @@ public class MainActivity extends Activity {
             mContact.add(item);
         }
 
-        lvContact = (LoadMoreListView) findViewById(R.id.lvContact);
-        contactAdapter = new ContactAdapter(this, R.layout.item_list_contact, mContact);
-        lvContact.setAdapter(contactAdapter);
+        mLvContact = (LoadMoreListView) findViewById(R.id.lvContact);
+        mContactAdapter = new ContactAdapter(this, R.layout.item_list_contact, mContact);
+        mLvContact.setAdapter(mContactAdapter);
 
-        lvContact.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+        mLvContact.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
                 new LoadDataTask().execute();
@@ -86,10 +86,10 @@ public class MainActivity extends Activity {
         protected void onPostExecute(Void result) {
 
             // We need notify the adapter that the data have been changed
-            contactAdapter.notifyDataSetChanged();
+            mContactAdapter.notifyDataSetChanged();
 
             // Call onLoadMoreComplete when the LoadMore task, has finished
-            ((LoadMoreListView) lvContact).onLoadMoreComplete();
+            ((LoadMoreListView) mLvContact).onLoadMoreComplete();
 
             super.onPostExecute(result);
         }
@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
         @Override
         protected void onCancelled() {
             // Notify the loading more operation has finished
-            ((LoadMoreListView) lvContact).onLoadMoreComplete();
+            ((LoadMoreListView) mLvContact).onLoadMoreComplete();
         }
     }
 
@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
             Contact contact = (Contact) data.getSerializableExtra("contact");
             int position = data.getIntExtra("position", -1);
             mContact.set(position, contact);
-            contactAdapter.notifyDataSetChanged();
+            mContactAdapter.notifyDataSetChanged();
         }
     }
 

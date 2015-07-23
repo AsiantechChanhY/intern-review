@@ -27,18 +27,18 @@ public class Fragment_edit_contact extends Fragment {
 					final Contact contact=(Contact) intent.getSerializableExtra("contact");
 					final int position=intent.getIntExtra("position", -1);
 
-					CircleImageView imgAvatar=(CircleImageView) view.findViewById(R.id.imgEditAvatar);
-					TextView tvName=(TextView) view.findViewById(R.id.txtEditName);
+					final CircleImageView imgAvatar=(CircleImageView) view.findViewById(R.id.imgEditAvatar);
+					final TextView tvName=(TextView) view.findViewById(R.id.txtEditName);
 
-					final EditText edtName=(EditText) view.findViewById(R.id.edtEditname);
+					final EditText edtUsername=(EditText) view.findViewById(R.id.edtEditname);
 					final EditText edtDesc=(EditText) view.findViewById(R.id.edtEditNoidung);
 
-					TextView txtSave=(TextView) view.findViewById(R.id.txtEditSave);
-					TextView txtCancel=(TextView) view.findViewById(R.id.txtEditCancel);
+					final TextView txtSave=(TextView) view.findViewById(R.id.txtEditSave);
+					final TextView txtCancel=(TextView) view.findViewById(R.id.txtEditCancel);
 
 					imgAvatar.setImageResource(contact.getmAvatar());
 					tvName.setText(contact.getmUsernameContact());
-					edtName.setText(contact.getmUsernameContact());
+					edtUsername.setText(contact.getmUsernameContact());
 					edtDesc.setText(contact.getmDescription());
 
 					txtCancel.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class Fragment_edit_contact extends Fragment {
 					txtSave.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View view) {
-							contact.setmUsernameContact(edtName.getText().toString());
+							contact.setmUsernameContact(edtUsername.getText().toString());
 							contact.setmDescription(edtDesc.getText().toString());
 							intent.putExtra("position",position);
 							intent.putExtra("contact", contact);

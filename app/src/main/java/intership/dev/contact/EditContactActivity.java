@@ -15,9 +15,11 @@ public class EditContactActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_contact);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment_edit_contact fragment = new Fragment_edit_contact();
+
         transaction.add(R.id.lnContain, fragment);
         transaction.commit();
     }

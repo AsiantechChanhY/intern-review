@@ -2,7 +2,6 @@ package intership.dev.contact.adapter;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
-
 import intership.dev.contact.EditContactActivity;
 import intership.dev.contact.R;
 import intership.dev.contact.model.Contact;
@@ -25,7 +23,7 @@ import intership.dev.contact.widget.CircleImageView;
 public class ContactAdapter extends ArrayAdapter<Contact> {
 
     private List<Contact> mContact;
-    Activity mActivity;
+    private Activity mActivity;
 
     public ContactAdapter(Activity activity, int resourcdId, List<Contact> contacts) {
         super(activity, resourcdId, contacts);
@@ -42,33 +40,29 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
     public View getView(final int position, View convertview, final ViewGroup parent) {
 
         ViewHodel hodel = null;
-        final Contact contact = getItem(position);
 
+        final Contact contact = getItem(position);
         final LayoutInflater layoutInflater = (LayoutInflater) mActivity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
         if(convertview == null) {
-            convertview = layoutInflater.inflate(R.layout.item_list_contact, null);
 
+            convertview = layoutInflater.inflate(R.layout.item_list_contact, null);
             hodel = new ViewHodel();
+
             hodel.imgAvatar = (CircleImageView) convertview.findViewById(R.id.imgAvatar);
             hodel.tvUsername = (TextView) convertview.findViewById(R.id.txtUsername);
             hodel.imgEdit = (ImageView) convertview.findViewById(R.id.imgEdit);
             hodel.imgDelete = (ImageView) convertview.findViewById(R.id.imgDelete);
+
             convertview.setTag(hodel);
 
             hodel.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final ImageView img = (ImageView) view.findViewById(R.id.imgDelete);
 
-                    view.setSelected(!view.isSelected());
-
-                    if (view.isSelected()) {
-
-                        img.setBackgroundResource(R.drawable.ic_delete_on);
                         final Dialog dialog = new Dialog(mActivity, R.style.Theme_Dialog);
-                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog.setContentView(R.layout.dialog_contact);
 
                         TextView txtName = (TextView) dialog.findViewById(R.id.txtdc1);
@@ -82,7 +76,6 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
                             @Override
                             public void onClick(View view) {
                                 dialog.cancel();
-                                img.setBackgroundResource(R.drawable.ic_delete);
                             }
                         });
                         txtOk.setOnClickListener(new View.OnClickListener() {
@@ -93,32 +86,18 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
                             }
                         });
                         dialog.show();
-
                     }
-
-                }
             });
 
             hodel.imgEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    final ImageView imgEdit = (ImageView) view.findViewById(R.id.imgEdit);
-
-                    view.setSelected(!view.isSelected());
-
-                    if (view.isSelected()) {
-
-                        imgEdit.setBackgroundResource(R.drawable.ic_edit_on);
                         Intent intent = new Intent(mActivity, EditContactActivity.class);
                         intent.putExtra("contact", contact);
                         intent.putExtra("position", position);
                         mActivity.startActivityForResult(intent, 1);
                     }
-                    else {
-                        imgEdit.setBackgroundResource(R.drawable.ic_edit);
-                    }
-                }
             });
 
         }
@@ -130,6 +109,4 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
 
         return convertview;
     }
-
-
 }
