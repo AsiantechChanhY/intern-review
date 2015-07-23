@@ -12,7 +12,9 @@
 
     <dimen name="relativelayout.dialog.width">300dp</dimen>
     <dimen name="relativelayout.dialog.heigth">300dp</dimen>
+    <dimen name="LinearLayout.dialog.heigth">30dp</dimen>
     <dimen name="textview.dialog.txtOk">125dp</dimen>
+    <dimen name="textview.dialog.txtdc1">15sp</dimen>
 
     <dimen name="progressbar.padding">3dp</dimen>
      <dimen name="progressbar.width">36dp</dimen>

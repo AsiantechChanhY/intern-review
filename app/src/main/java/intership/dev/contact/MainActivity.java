@@ -15,18 +15,18 @@ import intership.dev.contact.widget.LoadMoreListView;
 
 public class MainActivity extends Activity {
 
-    public static final String[] NAME = new String[]{"Strawberry", "Banana", "Orange", "Mixed", "Abbott",
-            "Abraham", "Alvin", "Dalton", "Gale", "Halsey", "Isaac","Philbert"};
+    public static final String[] NAME = new String[]{"Strawberry", "Banana", "Orange", "Mixed", "Abbott", "Abraham",
+                                                     "Alvin", "Dalton", "Gale", "Halsey", "Isaac","Philbert"};
 
     public static final String[] DESC = new String[]{"1","2","3","4","5","6","7","8","9","0", "1"," 2"};
 
     public static final Integer[] AVATAR = new Integer[]{R.drawable.ic_avt1, R.drawable.ic_avt2, R.drawable.ic_avt3,
-            R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2, R.drawable.ic_avt3,
-            R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2};
+                                                         R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1,
+                                                         R.drawable.ic_avt2, R.drawable.ic_avt3, R.drawable.ic_avt4,
+                                                         R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2};
 
     LoadMoreListView mLvContact;
     List<Contact> mContact;
-
     ContactAdapter mContactAdapter;
 
     @Override
@@ -54,7 +54,6 @@ public class MainActivity extends Activity {
                 new LoadDataTask().execute();
             }
         });
-
     }
 
     private class LoadDataTask extends AsyncTask<Void, Void, Void> {

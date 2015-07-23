@@ -3,8 +3,8 @@
     android:layout_height="120dp">
 
     <RelativeLayout
-        android:layout_width="@dimen/relativelayout.dialog.width"
-        android:layout_height="@dimen/relativelayout.dialog.heigth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true">
 
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Are you sure want to "
-        android:textSize="15sp"
+        android:textSize="@dimen/textview.dialog.txtdc1"
         android:textColor="@color/textview.dialog.txtdc1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
@@ -21,7 +21,7 @@
         <LinearLayout
             android:id="@+id/lndialog"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/LinearLayout.dialog.heigth"
             android:layout_alignParentBottom="true"
             android:gravity="center_vertical">
 
