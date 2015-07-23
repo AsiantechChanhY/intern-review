@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="imageview.backgroud.actionbar">#00bbd2</color>
-    <color name="textview.text.txtContact">#ffffff</color>
+    <color name="White">#ffffff</color>
     <color name="textview.item.txtUsername">#000000</color>
 
     <color name="textview.dialog.txtdc1">#4f4c4c</color>

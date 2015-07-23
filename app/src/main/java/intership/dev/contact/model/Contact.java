@@ -1,9 +1,14 @@
 package intership.dev.contact.model;
 
+import java.io.Serializable;
+
 /**
  * Created by tran on 7/21/15.
  */
-public class Contact {
+public class Contact implements Serializable{
+
+    public Contact() {
+    }
 
     private int mAvatar;
     private String mUsernameContact;

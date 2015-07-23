@@ -1,6 +1,7 @@
 package intership.dev.contact;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,7 +18,7 @@ public class MainActivity extends Activity {
     public static final String[] NAME = new String[]{"Strawberry", "Banana", "Orange", "Mixed", "Abbott",
             "Abraham", "Alvin", "Dalton", "Gale", "Halsey", "Isaac","Philbert"};
 
-    public static final String[] DESC = new String[]{"1,2,3,4,5,6,7,8,9,0, 1, 2"};
+    public static final String[] DESC = new String[]{"1","2","3","4","5","6","7","8","9","0", "1"," 2"};
 
     public static final Integer[] AVATAR = new Integer[]{R.drawable.ic_avt1, R.drawable.ic_avt2, R.drawable.ic_avt3,
             R.drawable.ic_avt4, R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2, R.drawable.ic_avt3,
@@ -39,6 +40,7 @@ public class MainActivity extends Activity {
             Contact item = new Contact();
             item.setmAvatar(AVATAR[i]);
             item.setmUsernameContact(NAME[i]);
+            item.setmDescription(DESC[i]);
             mContact.add(item);
         }
 
@@ -99,6 +101,17 @@ public class MainActivity extends Activity {
         }
     }
 
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Contact contact = (Contact) data.getSerializableExtra("contact");
+            int position = data.getIntExtra("position", -1);
+            mContact.set(position, contact);
+            contactAdapter.notifyDataSetChanged();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

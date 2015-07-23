@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="@string/texttiew.text.txtContact"
             android:textSize="@dimen/textview.size.txtContact"
-            android:textColor="@color/textview.text.txtContact"
+            android:textColor="@color/White"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
 
@@ -33,7 +33,7 @@
         android:layout_below="@+id/rlContact"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/textview.text.txtContact">
+        android:background="@color/White">
     </intership.dev.contact.widget.LoadMoreListView>
 
 
