@@ -25,9 +25,9 @@ public class MainActivity extends Activity {
                                                          R.drawable.ic_avt2, R.drawable.ic_avt3, R.drawable.ic_avt4,
                                                          R.drawable.ic_avt1, R.drawable.ic_avt1, R.drawable.ic_avt2};
 
-    LoadMoreListView mLvContact;
-    List<Contact> mContact;
-    ContactAdapter mContactAdapter;
+    private LoadMoreListView mLvContact;
+    private ContactAdapter mContactAdapter;
+    private List<Contact> mContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
