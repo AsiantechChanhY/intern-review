@@ -39,7 +39,6 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
      *  @param activity
      * @param contacts
      */
-
     public ContactAdapter(FragmentActivity activity,ArrayList<Contact> contacts) {
         this.mContact = contacts;
         this.mActivity = activity;
@@ -88,7 +87,7 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
         return 0;
     }
 
-    public class ViewHodel {
+    public class ViewHoldel {
         ImageView  imgEdit, imgDelete;
         TextView tvUsername;
         CircleImageView imgAvatar;
@@ -103,26 +102,26 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
      */
     public View getView(final int position, View convertview, final ViewGroup parent) {
 
-        ViewHodel hodel = null;
+        ViewHoldel holdel = null;
 
         if(convertview == null) {
 
             convertview = LayoutInflater.from(mActivity).inflate(R.layout.item_list_contact, parent, false);
-            hodel = new ViewHodel();
+            holdel = new ViewHoldel();
 
-            hodel.imgAvatar = (CircleImageView) convertview.findViewById(R.id.imgAvatar);
-            hodel.tvUsername = (TextView) convertview.findViewById(R.id.txtUsername);
-            hodel.imgEdit = (ImageView) convertview.findViewById(R.id.imgEdit);
-            hodel.imgDelete = (ImageView) convertview.findViewById(R.id.imgDelete);
+            holdel.imgAvatar = (CircleImageView) convertview.findViewById(R.id.imgAvatar);
+            holdel.tvUsername = (TextView) convertview.findViewById(R.id.txtUsername);
+            holdel.imgEdit = (ImageView) convertview.findViewById(R.id.imgEdit);
+            holdel.imgDelete = (ImageView) convertview.findViewById(R.id.imgDelete);
 
-            convertview.setTag(hodel);
+            convertview.setTag(holdel);
         }
         else {
-            hodel = (ViewHodel) convertview.getTag();
+            holdel = (ViewHoldel) convertview.getTag();
         }
 
-        setValue(hodel, position);
-        setEvent(hodel, position);
+        setValue(holdel, position);
+        setEvent(holdel, position);
 
         return convertview;
     }
@@ -139,7 +138,7 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
             mEditContactFragment.setOnChangeItemListener(this);
         }
         Bundle dataBundle = new Bundle();
-        dataBundle.putSerializable("dataBundle", contactModel);
+        dataBundle.putSerializable("Bundel", contactModel);
 
         mEditContactFragment.setArguments(dataBundle);
         mFragmentTransaction.replace(R.id.lnContain, mEditContactFragment);
@@ -149,13 +148,13 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
 
 
 
-    private void setValue(ViewHodel holder, int position) {
+    private void setValue(ViewHoldel holder, int position) {
         Contact model = (Contact) getItem(position);
         holder.tvUsername.setText(model.getmUsernameContact());
         holder.imgAvatar.setImageResource(model.getmAvatar());
     }
 
-    private void setEvent(final ViewHodel holder, final int position) {
+    private void setEvent(final ViewHoldel holder, final int position) {
         final Contact model = (Contact) getItem(position);
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
