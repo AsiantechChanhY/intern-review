@@ -1,11 +1,11 @@
 package intership.dev.contact.adapter;
 
-import android.app.Activity;
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
-import java.util.List;
-
-import intership.dev.contact.Dialog_contact;
 import intership.dev.contact.R;
 import intership.dev.contact.fragment.Fragment_edit_contact;
 import intership.dev.contact.model.Contact;
@@ -24,12 +21,10 @@ import intership.dev.contact.widget.CircleImageView;
 /**
  * Created by tran on 7/21/15.
  */
-public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact.OnChangeItemListener,
-        DialogInterface.OnDismissListener, Dialog_contact.OnClickContactDialog {
+public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact.OnChangeItemListener {
 
     private ArrayList<Contact> mContact = new ArrayList<>();
     private FragmentActivity mActivity;
-    private Dialog_contact mDialog;
 
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
@@ -42,9 +37,6 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
     public ContactAdapter(FragmentActivity activity,ArrayList<Contact> contacts) {
         this.mContact = contacts;
         this.mActivity = activity;
-        mDialog = new Dialog_contact(mActivity);
-        mDialog.setOnClickListViewContactListener(this);
-        mDialog.setOnDismissListener(this);
     }
 
     @Override
@@ -52,24 +44,7 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
         notifyDataSetChanged();
     }
 
-    @Override
-    public void onDismiss(DialogInterface dialogInterface) {
-
-    }
-
-    @Override
-    public void onClickBtnOK(View v) {
-        mContact.remove(mDialog.getPosition());
-        notifyDataSetChanged();
-        mDialog.dismiss();
-    }
-
-    @Override
-    public void onClickBtnCancel(View v) {
-        mDialog.dismiss();
-    }
-
-    /**
+        /**
      * Create class ViewHodel to convert view
      */
     @Override
@@ -103,17 +78,14 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
     public View getView(final int position, View convertview, final ViewGroup parent) {
 
         ViewHoldel holdel = null;
-
         if(convertview == null) {
 
             convertview = LayoutInflater.from(mActivity).inflate(R.layout.item_list_contact, parent, false);
             holdel = new ViewHoldel();
-
             holdel.imgAvatar = (CircleImageView) convertview.findViewById(R.id.imgAvatar);
             holdel.tvUsername = (TextView) convertview.findViewById(R.id.txtUsername);
             holdel.imgEdit = (ImageView) convertview.findViewById(R.id.imgEdit);
             holdel.imgDelete = (ImageView) convertview.findViewById(R.id.imgDelete);
-
             convertview.setTag(holdel);
         }
         else {
@@ -121,7 +93,7 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
         }
 
         setValue(holdel, position);
-        setEvent(holdel, position);
+        setEvent(holdel, mContact.get(position),mActivity);
 
         return convertview;
     }
@@ -131,12 +103,15 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
      * @param contactModel is a object to refactor
      */
     private void callEditContactFragment(Contact contactModel) {
+
         mFragmentManager = mActivity.getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
+
         if (mEditContactFragment == null) {
             mEditContactFragment = new Fragment_edit_contact();
             mEditContactFragment.setOnChangeItemListener(this);
         }
+
         Bundle dataBundle = new Bundle();
         dataBundle.putSerializable("Bundel", contactModel);
 
@@ -146,28 +121,43 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
         mFragmentTransaction.commit();
     }
 
-
-
     private void setValue(ViewHoldel holder, int position) {
+
         Contact model = (Contact) getItem(position);
+
         holder.tvUsername.setText(model.getmUsernameContact());
         holder.imgAvatar.setImageResource(model.getmAvatar());
     }
 
-    private void setEvent(final ViewHoldel holder, final int position) {
-        final Contact model = (Contact) getItem(position);
+    private void setEvent(final ViewHoldel holder, final Contact contact, final FragmentActivity activity) {
+
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDialog.setPosition(position);
-                mDialog.show();
-                mDialog.setDialogMessage(model);
+                final Dialog dialog = new Dialog(activity, R.style.Theme_Dialog);
+                dialog.setContentView(R.layout.dialog_contact);
+                dialog.show();
+                TextView tvTitle = (TextView) dialog.findViewById(R.id.txtdc1);
+                tvTitle.setText(Html.fromHtml("aaaaaaaaaaaaaa" + contact.getmUsernameContact()));
+
+                TextView tvOk = (TextView) dialog.findViewById(R.id.txtOk);
+                tvOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mContact.remove(contact);
+                        notifyDataSetChanged();
+                        dialog.hide();
+                    }
+                });
+
             }
         });
+
         holder.imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callEditContactFragment(model);
+
+                callEditContactFragment(contact);
             }
         });
  }
