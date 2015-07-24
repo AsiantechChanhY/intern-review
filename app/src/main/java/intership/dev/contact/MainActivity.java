@@ -29,6 +29,10 @@ public class MainActivity extends Activity {
     private ContactAdapter mContactAdapter;
     private List<Contact> mContact;
 
+    /**
+     * Called when the activity is first created.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
