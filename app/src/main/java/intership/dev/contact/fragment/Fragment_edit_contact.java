@@ -17,7 +17,6 @@ import intership.dev.contact.widget.CircleImageView;
 public class Fragment_edit_contact extends Fragment implements View.OnClickListener {
 
 	private Contact mModel;
-
 	private CircleImageView imgAvatar;
 	private TextView tvName, tvSave, tvCancel;
 	private EditText edtDesc, edtUsername;
@@ -71,8 +70,6 @@ public class Fragment_edit_contact extends Fragment implements View.OnClickListe
 				getActivity().onBackPressed();
 				break;
 			case R.id.txtCancel:
-				getActivity().onBackPressed();
-			case R.id.imgBack:
 				getActivity().onBackPressed();
 		}
 	}

@@ -38,26 +38,13 @@ public class Fragment_list_contact extends Fragment {
         setValue();
     }
 
-    @Override
-    public void onResume() {
-        mContactAdapter = new ContactAdapter(getActivity(), mContact);
-        mLvContact.setAdapter(mContactAdapter);
-
-        mLvContact.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                new LoadDataTask().execute();
-            }
-        });
-        super.onResume();
-    }
-
     /**
      * Called when the activity is first created.
      * @param savedInstanceState
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View mListContact = inflater.inflate(R.layout.activity_main, container, false);
 
         mLvContact = (LoadMoreListView) mListContact.findViewById(R.id.lvContact);
@@ -76,6 +63,22 @@ public class Fragment_list_contact extends Fragment {
             item.setmDescription(DESC[i]);
             mContact.add(item);
         }
+    }
+
+
+    @Override
+    public void onResume() {
+
+        mContactAdapter = new ContactAdapter(getActivity(), mContact);
+        mLvContact.setAdapter(mContactAdapter);
+
+        mLvContact.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                new LoadDataTask().execute();
+            }
+        });
+        super.onResume();
     }
 
     /**

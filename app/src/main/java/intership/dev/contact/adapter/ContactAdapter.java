@@ -26,8 +26,8 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
     private ArrayList<Contact> mContact = new ArrayList<>();
     private FragmentActivity mActivity;
 
-    private FragmentManager mFragmentManager;
-    private FragmentTransaction mFragmentTransaction;
+    private FragmentManager mManager;
+    private FragmentTransaction mTransaction;
     private Fragment_edit_contact mEditContactFragment;
 
     /**
@@ -44,7 +44,7 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
         notifyDataSetChanged();
     }
 
-        /**
+    /**
      * Create class ViewHodel to convert view
      */
     @Override
@@ -78,6 +78,7 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
     public View getView(final int position, View convertview, final ViewGroup parent) {
 
         ViewHoldel holdel = null;
+
         if(convertview == null) {
 
             convertview = LayoutInflater.from(mActivity).inflate(R.layout.item_list_contact, parent, false);
@@ -102,10 +103,10 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
      * method intent to EditContactFragment
      * @param contactModel is a object to refactor
      */
-    private void callEditContactFragment(Contact contactModel) {
+    private void call(Contact contactModel) {
 
-        mFragmentManager = mActivity.getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mManager = mActivity.getSupportFragmentManager();
+        mTransaction = mManager.beginTransaction();
 
         if (mEditContactFragment == null) {
             mEditContactFragment = new Fragment_edit_contact();
@@ -116,9 +117,9 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
         dataBundle.putSerializable("Bundel", contactModel);
 
         mEditContactFragment.setArguments(dataBundle);
-        mFragmentTransaction.replace(R.id.lnContain, mEditContactFragment);
-        mFragmentTransaction.addToBackStack(null);
-        mFragmentTransaction.commit();
+        mTransaction.replace(R.id.lnContain, mEditContactFragment);
+        mTransaction.addToBackStack(null);
+        mTransaction.commit();
     }
 
     private void setValue(ViewHoldel holder, int position) {
@@ -134,11 +135,13 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final Dialog dialog = new Dialog(activity, R.style.Theme_Dialog);
                 dialog.setContentView(R.layout.dialog_contact);
                 dialog.show();
+
                 TextView tvTitle = (TextView) dialog.findViewById(R.id.txtdc1);
-                tvTitle.setText(Html.fromHtml("aaaaaaaaaaaaaa" + contact.getmUsernameContact()));
+                tvTitle.setText(Html.fromHtml("Are you sure you want to delete " + contact.getmUsernameContact() + "?"));
 
                 TextView tvOk = (TextView) dialog.findViewById(R.id.txtOk);
                 tvOk.setOnClickListener(new View.OnClickListener() {
@@ -157,7 +160,7 @@ public class ContactAdapter extends BaseAdapter implements Fragment_edit_contact
             @Override
             public void onClick(View view) {
 
-                callEditContactFragment(contact);
+                call(contact);
             }
         });
  }
